@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.cmxiv.alfredapp.litra-controller</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>12D6BDAA-160C-4992-AF43-4231947A173F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A99569CE-F93E-43B1-8721-A512AA2627C4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Darren Meyer</string>
+	<key>description</key>
+	<string>Controls Logitech Litra Glow and Litra Beam devices</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Litra Controller</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>litra</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Control your Litra device</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>12D6BDAA-160C-4992-AF43-4231947A173F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!env zsh
+"./hid-litra.py" "$@"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>hid-litra.py</string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A99569CE-F93E-43B1-8721-A512AA2627C4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Controls Litra Glow and Litra Beam USB conferencing/streaming lights
+
+Solution is thanks to two existing command-line tools, which we learned from to create our own solution:
+
+* https://github.com/kharyam/litra-driver (a PyUSB driver that doesn't work on macOS)
+* https://ultracrepidarian.phfactor.net/2022/03/09/controlling-the-logitech-litra-on-macos/ (instructions for using shell functions with 'hidapitester' to control a Litra Glow)
+
+We ship amd64 and x86_64 versions of the hidapitester binary from https://github.com/todbot/hidapitester
+
+# 0.1.0
+
+Use 'litra [-d {glow,beam}] [-t TEMP] [-b PERCENT] [{on,off}]'
+
+If you specify a TEMP or PERCENT value, 'on' is presumed unless 'off' is specified.</string>
+	<key>uidata</key>
+	<dict>
+		<key>12D6BDAA-160C-4992-AF43-4231947A173F</key>
+		<dict>
+			<key>xpos</key>
+			<real>90</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+		<key>A99569CE-F93E-43B1-8721-A512AA2627C4</key>
+		<dict>
+			<key>xpos</key>
+			<real>285</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.1.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
