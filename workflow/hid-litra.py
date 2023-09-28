@@ -14,7 +14,8 @@ class Device(IntEnum):
 
 
 class Light(object):
-    HID_BIN=f'{os.path.dirname(os.path.realpath(__file__))}/hidapitester-{platform.machine()}'
+    # HID_BIN=f'{os.path.dirname(os.path.realpath(__file__))}/hidapitester-{platform.machine()}'
+    HID_BIN=f'{os.path.dirname(os.path.realpath(__file__))}/hidapitester'
     LITRA_PREFIX=[0x11, 0xff, 0x04]
     LITRA_CMD_POWER=[0x1C]
     LITRA_CMD_BRIGHTNESS=[0x4c, 0x00]
@@ -42,8 +43,10 @@ class Light(object):
             '--vidpid', f'046D/{self.device_id:04X}',
             '--open',
             '--length', '20',
-            '--send-output', f'{Light._bytes_to_string(data_bytes)}'
+            '--send-output', f'{Light._bytes_to_string(data_bytes)}',
+            '--close'
             ]
+        # print(f"Running {hid_cmd}", file=sys.stderr)
         completed = sysrun(hid_cmd, capture_output=True)
 
         # hidapitester doesn't give non-zero return codes on error
